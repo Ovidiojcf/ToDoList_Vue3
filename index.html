@@ -36,16 +36,16 @@
                     class="single-todo"
                     v-for="task in tasks"
                     :class="{done : task.done}"
-                    @click="task.done = !task.done"
+                    @click="task.done = !task.done; storeAll()"
                     >
                         <p>{{task.text}}</p>
                     </div>
                 </div>
 
-                <button class="clear" v-if="tasks.length !== 0" @click="tasks=[]">Limpar tudo</button>
+                <button class="clear" v-if="tasks.length !== 0" @click="tasks=[]; storeAll()">Limpar tudo</button>
 
                 <input type="text" placeholder="Escreva uma nova tarefa..." v-model="newTask.text">
-                <button class="add" @click="addTask">Adicionar</button>
+                <button class="add" @click="addTask" @click="storeAll()">Adicionar</button>
 
                 <div class="instructions">
                     Instruções:
